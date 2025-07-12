@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('Register User', async ({ page }) => {
+test('Should sign up successfully when all fields are filled correctly', async ({ page }) => {
   const timestamp = Date.now();
   const email = `Reg${timestamp}@abc.com`;
 
@@ -42,3 +42,34 @@ test('Register User', async ({ page }) => {
   await page.getByRole('link', { name: 'Continue' }).click();
 });
 
+test('Should fail to sign up when the Name field is empty', async ({ page }) => {
+  const timestamp = Date.now();
+  const email = `Reg${timestamp}@abc.com`;
+
+  await page.goto('https://automationexercise.com/');
+  await page.getByRole('link', { name: ' Signup / Login' }).click();
+  await page.getByRole('button', { name: 'Signup' }).click();
+  const message = await page
+    .locator('input[placeholder="Name"]')
+    .evaluate(el => (el as HTMLInputElement).validationMessage);
+
+    expect(message).toBe('Please fill out this field.');  
+});
+
+test('Should fail to sign up when the Email Address field is empty', async ({ page }) => {
+  const timestamp = Date.now();
+  const email = `Reg${timestamp}@abc.com`;
+
+  await page.goto('https://automationexercise.com/');
+  await page.getByRole('link', { name: ' Signup / Login' }).click();
+
+  await page.getByRole('textbox', { name: 'Name' }).click();
+  await page.getByRole('textbox', { name: 'Name' }).fill('Foobar');
+  await page.getByRole('button', { name: 'Signup' }).click();
+
+  const message = await page
+    .locator('input[data-qa="signup-email"]')
+    .evaluate(el => (el as HTMLInputElement).validationMessage);
+
+    expect(message).toBe('Please fill out this field.');  
+});
