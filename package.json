@@ -1,23 +1,22 @@
 {
-  "name": "playwright-practice-1",
+  "name": "playwright-field-type-test",
   "version": "1.0.0",
   "description": "Shady Meadows B&amp;B",
   "main": "index.js",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kethch1206/Playwright-Practice-1.git"
+    "url": "git+https://github.com/kethch1206/PlaywrightFieldTypeTest.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kethch1206/Playwright-Practice-1/issues"
+    "url": "https://github.com/kethch1206/PlaywrightFieldTypeTest/issues"
   },
-  "homepage": "https://github.com/kethch1206/Playwright-Practice-1#readme",
+  "homepage": "https://github.com/kethch1206/PlaywrightFieldTypeTest#readme",
   "devDependencies": {
     "@playwright/test": "^1.53.0",
-    "@types/node": "^24.0.3",
     "playwright": "^1.53.0"
   }
 }
